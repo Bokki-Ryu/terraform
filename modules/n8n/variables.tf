@@ -1,4 +1,4 @@
-variable "n8n_docker" {
+variable "docker" {
   description = "Configuration about docker"
   type        = map(string)
   default     = {
