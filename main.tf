@@ -1,14 +1,14 @@
 resource "docker_image" "n8n" {
-  name         = "docker.n8n.io/n8nio/n8n:latest"
+  name         = var.docker.image
   keep_locally = true
 }
 
 resource "docker_volume" "n8n_data" {
-  name = "n8n_data"
+  name = var.docker.volume_name
 }
 
 resource "docker_container" "n8n" {
-  name    = "n8n"
+  name    = var.docker.container_name
   image   = docker_image.n8n.image_id
 
   ports {
@@ -17,7 +17,7 @@ resource "docker_container" "n8n" {
   }
 
   volumes {
-    volume_name = "n8n_data"
+    volume_name = docker_volume.n8n_data.name
     container_path = "/home/node/.n8n"
   }
 }
