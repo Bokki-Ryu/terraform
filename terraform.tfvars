@@ -3,3 +3,8 @@ n8n_docker = {
   container_name = "custom_n8n"
   volume_name = "custom_n8n_data"
 }
+ollama_docker = {
+  image = "ollama/ollama"
+  container_name = "custom_ollama"
+  volume_name = "custom_ollama_data"
+}
